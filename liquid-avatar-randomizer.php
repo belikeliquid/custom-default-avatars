@@ -195,6 +195,9 @@ function lmar_filter_avatar_data( $args, $id_or_email ) {
 	}
 
 	// Gravatar mode: real Gravatars still show; everyone else falls back to our image.
+	if ( 0 === strpos( home_url(), 'https:' ) ) {
+		$url = set_url_scheme( $url, 'https' );
+	}
 	$args['default'] = $url;
 	return $args;
 }
