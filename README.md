@@ -1,4 +1,4 @@
-# Liquid Avatar Randomizer
+# Custom Default Avatars by Liquid Media
 
 A WordPress plugin by [Liquid Media](https://belikeliquid.com).
 
@@ -17,8 +17,8 @@ Gives every commenter, user and subscriber without an avatar an image from your 
 
 ## Install
 
-1. Download the repo as a ZIP (or clone it into `wp-content/plugins/liquid-avatar-randomizer`)
-2. Activate **Liquid Avatar Randomizer** under Plugins
+1. Download the repo as a ZIP (or clone it into `wp-content/plugins/custom-default-avatars`)
+2. Activate **Custom Default Avatars by Liquid Media** under Plugins
 3. Manage the images under **Settings > Avatar Randomizer**
 
 ## Notes

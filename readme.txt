@@ -1,10 +1,10 @@
-=== Liquid Avatar Randomizer ===
+=== Custom Default Avatars by Liquid Media ===
 Contributors: belikeliquid
 Tags: avatar, default avatar, gravatar, comments, users
 Requires at least: 5.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ Developed by Liquid Media (https://belikeliquid.com).
 3. Go to Settings > Avatar Randomizer
 
 == Changelog ==
+
+= 1.0.1 =
+* Renamed to Custom Default Avatars by Liquid Media.
 
 = 1.0.0 =
 * First release.

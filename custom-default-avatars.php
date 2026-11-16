@@ -1,23 +1,24 @@
 <?php
 /**
- * Plugin Name:       Liquid Avatar Randomizer
- * Plugin URI:        https://github.com/belikeliquid/liquid-avatar-randomizer
+ * Plugin Name:       Custom Default Avatars by Liquid Media
+ * Plugin URI:        https://github.com/belikeliquid/custom-default-avatars
  * Description:       Gives every commenter, user and subscriber without an avatar a fun image picked from your own set. Add or remove images any time under Settings > Avatar Randomizer.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.6
  * Requires PHP:      7.4
  * Author:            Liquid Media
  * Author URI:        https://belikeliquid.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       liquid-avatar-randomizer
+ * Text Domain:       custom-default-avatars
+ * Update URI:        https://github.com/belikeliquid/custom-default-avatars
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LMAR_VERSION', '1.0.0' );
+define( 'LMAR_VERSION', '1.0.1' );
 define( 'LMAR_FILE', __FILE__ );
 define( 'LMAR_URL', plugin_dir_url( __FILE__ ) );
 define( 'LMAR_DIR', plugin_dir_path( __FILE__ ) );
@@ -207,7 +208,7 @@ add_filter( 'pre_get_avatar_data', 'lmar_filter_avatar_data', 20, 2 );
  * Add our choice to Settings > Discussion > Default Avatar.
  */
 function lmar_avatar_defaults( $defaults ) {
-	$defaults[ LMAR_KEY ] = __( 'Liquid Avatar Randomizer (your image set)', 'liquid-avatar-randomizer' );
+	$defaults[ LMAR_KEY ] = __( 'Custom Default Avatars by Liquid Media (your image set)', 'custom-default-avatars' );
 	return $defaults;
 }
 add_filter( 'avatar_defaults', 'lmar_avatar_defaults' );

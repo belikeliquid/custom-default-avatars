@@ -1,4 +1,4 @@
-/* Liquid Avatar Randomizer: image set manager. */
+/* Custom Default Avatars by Liquid Media: image set manager. */
 (function ($) {
 	'use strict';
 

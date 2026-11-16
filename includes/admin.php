@@ -82,10 +82,10 @@ function lmar_sanitize_make_default( $value ) {
  */
 function lmar_admin_menu() {
 	add_options_page(
-		__( 'Avatar Randomizer', 'liquid-avatar-randomizer' ),
-		__( 'Avatar Randomizer', 'liquid-avatar-randomizer' ),
+		__( 'Avatar Randomizer', 'custom-default-avatars' ),
+		__( 'Avatar Randomizer', 'custom-default-avatars' ),
 		'manage_options',
-		'liquid-avatar-randomizer',
+		'custom-default-avatars',
 		'lmar_render_page'
 	);
 }
@@ -95,7 +95,7 @@ add_action( 'admin_menu', 'lmar_admin_menu' );
  * Scripts and styles for our page only.
  */
 function lmar_admin_assets( $hook ) {
-	if ( 'settings_page_liquid-avatar-randomizer' !== $hook ) {
+	if ( 'settings_page_custom-default-avatars' !== $hook ) {
 		return;
 	}
 	wp_enqueue_media();
@@ -113,11 +113,11 @@ function lmar_admin_assets( $hook ) {
 		'lmarData',
 		array(
 			'defaults'    => $defaults,
-			'frameTitle'  => __( 'Choose avatar images', 'liquid-avatar-randomizer' ),
-			'frameButton' => __( 'Add to randomizer', 'liquid-avatar-randomizer' ),
-			'remove'      => __( 'Remove', 'liquid-avatar-randomizer' ),
-			'confirmReset' => __( 'Replace the current set with the 5 starter images?', 'liquid-avatar-randomizer' ),
-			'webpNote'    => __( 'WebP and other formats work, but Gravatar cannot use them as a fallback, so people with a real Gravatar will see this image instead.', 'liquid-avatar-randomizer' ),
+			'frameTitle'  => __( 'Choose avatar images', 'custom-default-avatars' ),
+			'frameButton' => __( 'Add to randomizer', 'custom-default-avatars' ),
+			'remove'      => __( 'Remove', 'custom-default-avatars' ),
+			'confirmReset' => __( 'Replace the current set with the 5 starter images?', 'custom-default-avatars' ),
+			'webpNote'    => __( 'WebP and other formats work, but Gravatar cannot use them as a fallback, so people with a real Gravatar will see this image instead.', 'custom-default-avatars' ),
 		)
 	);
 }
@@ -135,16 +135,16 @@ function lmar_render_page() {
 	$is_default = ( LMAR_KEY === get_option( 'avatar_default' ) );
 	?>
 	<div class="wrap lmar-wrap">
-		<h1><?php esc_html_e( 'Avatar Randomizer', 'liquid-avatar-randomizer' ); ?></h1>
-		<p class="lmar-intro"><?php esc_html_e( 'Anyone without an avatar gets one of these images. The same person always gets the same image.', 'liquid-avatar-randomizer' ); ?></p>
+		<h1><?php esc_html_e( 'Avatar Randomizer', 'custom-default-avatars' ); ?></h1>
+		<p class="lmar-intro"><?php esc_html_e( 'Anyone without an avatar gets one of these images. The same person always gets the same image.', 'custom-default-avatars' ); ?></p>
 
 		<?php if ( ! get_option( 'show_avatars' ) ) : ?>
 			<div class="notice notice-warning inline"><p>
 				<?php
 				printf(
 					/* translators: %s: link to Discussion settings */
-					esc_html__( 'Avatars are turned off for this site. Turn on "Show Avatars" in %s.', 'liquid-avatar-randomizer' ),
-					'<a href="' . esc_url( admin_url( 'options-discussion.php#show_avatars' ) ) . '">' . esc_html__( 'Settings > Discussion', 'liquid-avatar-randomizer' ) . '</a>'
+					esc_html__( 'Avatars are turned off for this site. Turn on "Show Avatars" in %s.', 'custom-default-avatars' ),
+					'<a href="' . esc_url( admin_url( 'options-discussion.php#show_avatars' ) ) . '">' . esc_html__( 'Settings > Discussion', 'custom-default-avatars' ) . '</a>'
 				);
 				?>
 			</p></div>
@@ -154,50 +154,50 @@ function lmar_render_page() {
 			<?php settings_fields( 'lmar_settings' ); ?>
 			<input type="hidden" id="lmar-images" name="<?php echo esc_attr( LMAR_OPT_IMAGES ); ?>" value="<?php echo esc_attr( implode( ',', $images ) ); ?>">
 
-			<h2><?php esc_html_e( 'Image set', 'liquid-avatar-randomizer' ); ?></h2>
+			<h2><?php esc_html_e( 'Image set', 'custom-default-avatars' ); ?></h2>
 			<ul id="lmar-grid" class="lmar-grid">
 				<?php foreach ( $images as $entry ) : ?>
 					<li class="lmar-item" data-id="<?php echo esc_attr( $entry ); ?>">
 						<img src="<?php echo esc_url( lmar_entry_url( $entry ) ); ?>" alt="">
-						<button type="button" class="lmar-remove" aria-label="<?php esc_attr_e( 'Remove', 'liquid-avatar-randomizer' ); ?>">&times;</button>
+						<button type="button" class="lmar-remove" aria-label="<?php esc_attr_e( 'Remove', 'custom-default-avatars' ); ?>">&times;</button>
 					</li>
 				<?php endforeach; ?>
 			</ul>
 			<p id="lmar-empty" class="description" <?php echo $images ? 'hidden' : ''; ?>>
-				<?php esc_html_e( 'No images yet. Until you add some, the WordPress Mystery Person is used.', 'liquid-avatar-randomizer' ); ?>
+				<?php esc_html_e( 'No images yet. Until you add some, the WordPress Mystery Person is used.', 'custom-default-avatars' ); ?>
 			</p>
 			<p>
-				<button type="button" class="button button-secondary" id="lmar-add"><?php esc_html_e( 'Add images', 'liquid-avatar-randomizer' ); ?></button>
-				<button type="button" class="button-link" id="lmar-reset"><?php esc_html_e( 'Restore the 5 starter images', 'liquid-avatar-randomizer' ); ?></button>
+				<button type="button" class="button button-secondary" id="lmar-add"><?php esc_html_e( 'Add images', 'custom-default-avatars' ); ?></button>
+				<button type="button" class="button-link" id="lmar-reset"><?php esc_html_e( 'Restore the 5 starter images', 'custom-default-avatars' ); ?></button>
 			</p>
-			<p class="description"><?php esc_html_e( 'Tip: square PNG or JPG images, 256px or bigger, look best.', 'liquid-avatar-randomizer' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Tip: square PNG or JPG images, 256px or bigger, look best.', 'custom-default-avatars' ); ?></p>
 
-			<h2><?php esc_html_e( 'Settings', 'liquid-avatar-randomizer' ); ?></h2>
+			<h2><?php esc_html_e( 'Settings', 'custom-default-avatars' ); ?></h2>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Site default avatar', 'liquid-avatar-randomizer' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Site default avatar', 'custom-default-avatars' ); ?></th>
 					<td>
 						<label>
 							<input type="checkbox" name="lmar_make_default" value="1" <?php checked( $is_default ); ?>>
-							<?php esc_html_e( 'Use this image set as the default avatar', 'liquid-avatar-randomizer' ); ?>
+							<?php esc_html_e( 'Use this image set as the default avatar', 'custom-default-avatars' ); ?>
 						</label>
-						<p class="description"><?php esc_html_e( 'Same as picking it under Settings > Discussion > Default Avatar.', 'liquid-avatar-randomizer' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Same as picking it under Settings > Discussion > Default Avatar.', 'custom-default-avatars' ); ?></p>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Real Gravatars', 'liquid-avatar-randomizer' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Real Gravatars', 'custom-default-avatars' ); ?></th>
 					<td>
 						<fieldset>
 							<label>
 								<input type="radio" name="<?php echo esc_attr( LMAR_OPT_MODE ); ?>" value="gravatar" <?php checked( $mode, 'gravatar' ); ?>>
-								<?php esc_html_e( 'Keep them. Only people without a Gravatar get an image from the set.', 'liquid-avatar-randomizer' ); ?>
+								<?php esc_html_e( 'Keep them. Only people without a Gravatar get an image from the set.', 'custom-default-avatars' ); ?>
 							</label><br>
 							<label>
 								<input type="radio" name="<?php echo esc_attr( LMAR_OPT_MODE ); ?>" value="local" <?php checked( $mode, 'local' ); ?>>
-								<?php esc_html_e( 'Skip Gravatar. Everyone gets an image from the set, loaded from this site (faster, no third party calls).', 'liquid-avatar-randomizer' ); ?>
+								<?php esc_html_e( 'Skip Gravatar. Everyone gets an image from the set, loaded from this site (faster, no third party calls).', 'custom-default-avatars' ); ?>
 							</label>
 						</fieldset>
-						<p class="description"><?php esc_html_e( 'Avatars uploaded with a local avatar plugin always win.', 'liquid-avatar-randomizer' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Avatars uploaded with a local avatar plugin always win.', 'custom-default-avatars' ); ?></p>
 					</td>
 				</tr>
 			</table>
@@ -209,7 +209,7 @@ function lmar_render_page() {
 			<?php
 			printf(
 				/* translators: %s: Liquid Media link */
-				esc_html__( 'Developed by %s', 'liquid-avatar-randomizer' ),
+				esc_html__( 'Developed by %s', 'custom-default-avatars' ),
 				'<a href="' . esc_url( LMAR_CREDIT_URL ) . '" target="_blank" rel="noopener">Liquid Media</a>'
 			);
 			?>
@@ -224,7 +224,7 @@ function lmar_render_page() {
 function lmar_action_links( $links ) {
 	array_unshift(
 		$links,
-		'<a href="' . esc_url( admin_url( 'options-general.php?page=liquid-avatar-randomizer' ) ) . '">' . esc_html__( 'Settings', 'liquid-avatar-randomizer' ) . '</a>'
+		'<a href="' . esc_url( admin_url( 'options-general.php?page=custom-default-avatars' ) ) . '">' . esc_html__( 'Settings', 'custom-default-avatars' ) . '</a>'
 	);
 	return $links;
 }
