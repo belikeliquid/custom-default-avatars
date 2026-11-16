@@ -1,0 +1,55 @@
+.lmar-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin: 16px 0;
+	padding: 0;
+	list-style: none;
+}
+
+.lmar-item {
+	position: relative;
+	width: 96px;
+	height: 96px;
+	margin: 0;
+}
+
+.lmar-item img {
+	width: 96px;
+	height: 96px;
+	object-fit: cover;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	background: #f0f0f1;
+}
+
+.lmar-remove {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	background: #d63638;
+	color: #fff;
+	font-size: 16px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.lmar-remove:hover,
+.lmar-remove:focus {
+	background: #b32d2e;
+}
+
+#lmar-reset {
+	margin-left: 12px;
+	vertical-align: middle;
+}
+
+.lmar-credit {
+	margin-top: 32px;
+	color: #646970;
+}
